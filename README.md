@@ -15,7 +15,7 @@ pip install git+https://github.com/viown/replay
 replay --record my_macro.rep
 ```
 
-Addtiional options can be used when replaying:
+Addtiional options can be used when recording:
 - `-w [seconds]` - Wait a specific number of seconds before recording.
 - `-p` - Millisecond-precise recording. Will result in a significantly larger file. (disabled by default)
 - - With precise disabled, you can expect inaccuracies to be within ~50 ms.

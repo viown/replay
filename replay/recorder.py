@@ -55,6 +55,13 @@ class Recorder:
 
     def _on_scroll(self, x: int, y: int, dx: int, dy: int):
         self._add_wait()
+        last_mouse_move = None
+        for instruction in reversed(self.instructions):
+            if instruction.code == InstructionCode.MOUSEMOVE:
+                last_mouse_move = instruction
+                break
+        if not last_mouse_move or (last_mouse_move.arg.x != x or last_mouse_move.arg.y != y):
+            self.instructions.append(Instruction(InstructionCode.MOUSEMOVE, Pair(x, y)))
         self.instructions.append(Instruction(InstructionCode.MOUSESCROLL, Pair(dx, dy)))
 
     ### Keyboard events
